@@ -1,0 +1,17 @@
+.pokemonCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: solid #ff0000;
+    color: #ff0000;
+    border-radius: 10px;
+    background-color:white;
+}
+
+img {
+    max-width: 250px;
+}
+
+h2, h3 {
+    margin: 5px 10px;
+}
