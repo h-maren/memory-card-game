@@ -1,8 +1,25 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect,useRef } from 'react'
 import GetPokemonInfo from './components/PokemonCards.jsx'
 import './App.css'
 
 function App() {
+
+  const [pokemonDeck,setPokemonDeck] = useState(['pikachu','charizard','ivysaur','squirtle','metapod','rattata','cubone','eevee','jigglypuff','haunter']);
+
+
+  function randomizeDeck(){
+    console.log(pokemonDeck);
+   
+    let newDeck=[...pokemonDeck];
+    //Fisher-Yaes Shuffle Algorithm
+    for(let i=newDeck.length-1;i>0;i--){
+      let j=Math.floor(Math.random()*(i+1));
+      [newDeck[i],newDeck[j]]=[newDeck[j],newDeck[i]];
+    }
+    setPokemonDeck(newDeck);
+    console.log(newDeck);
+  }
+
 
   return (
     <>
@@ -14,24 +31,10 @@ function App() {
     </div>
     </header>
     <div className="pokemonCardWrapper">
-      <div>
-      <GetPokemonInfo name={'pikachu'}></GetPokemonInfo>
-      </div>
-      <div>
-      <GetPokemonInfo name={'charizard'}></GetPokemonInfo>
-      </div>
-      <div>
-      <GetPokemonInfo name={'ivysaur'}></GetPokemonInfo>
-      </div>
-      <div>
-      <GetPokemonInfo name={'squirtle'}></GetPokemonInfo>
-      </div>
-      <div>
-      <GetPokemonInfo name={'metapod'}></GetPokemonInfo>
-      </div>
-      <div>
-      <GetPokemonInfo name={'rattata'}></GetPokemonInfo>
-      </div>
+      {pokemonDeck.map(card => (
+        <GetPokemonInfo key={card} name={card} clickFnc={randomizeDeck}></GetPokemonInfo>
+      ))
+      }
     </div>
     </>
   )

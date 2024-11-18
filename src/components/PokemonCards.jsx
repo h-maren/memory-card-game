@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react'
 import '../styles/PokemonCards.css'
 
-export default function GetPokemonInfo({name}){
+export default function GetPokemonInfo({name,clickFnc}){
     let [pokemon,setPokemon] = useState([]);
     let [isLoading,setLoading] = useState(true);
 
@@ -21,12 +21,15 @@ export default function GetPokemonInfo({name}){
         pokemonImage= `https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/00`+pokemon.id+`.png`;
     }
 
+    if(pokemon.id>=100){
+        pokemonImage= `https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/`+pokemon.id+`.png`;
+    }
     if(!isLoading){
     return(
-        <div className='pokemonCard'>
+        
+        <div className='pokemonCard' onClick={clickFnc}>
             <h2>{pokemon.name.toUpperCase()}</h2>
             <img src={pokemonImage} />
-            <h3>#{pokemon.id}</h3>
             <h3>{pokemon.types[0].type.name}</h3>
         </div>
     )
