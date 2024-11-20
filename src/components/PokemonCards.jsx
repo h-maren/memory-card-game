@@ -27,7 +27,7 @@ export default function GetPokemonInfo({name,clickFnc}){
     if(!isLoading){
     return(
         
-        <div className='pokemonCard' onClick={clickFnc}>
+        <div className='pokemonCard' data-index={name} onClick={clickFnc}>
             <h2>{pokemon.name.toUpperCase()}</h2>
             <img src={pokemonImage} />
             <h3>{pokemon.types[0].type.name}</h3>

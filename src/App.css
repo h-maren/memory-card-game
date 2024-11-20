@@ -16,6 +16,10 @@ header {
   align-items: center;
 }
 
+h1, h2 {
+  margin: 10px 5px;
+}
+
 h4 {
   margin: 5px;
   text-align: right;
